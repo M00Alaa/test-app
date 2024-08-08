@@ -1,0 +1,104 @@
+<ng-container>
+  <section class="d-grid h-100" style="grid-template-rows: auto 1fr;">
+    <div class="w-100 py-4 px-3 d-flex  bg-ksa  bg-white">
+      <div
+        class="mw-lg-600px text-nowrap d-flex flex-md-row col-lg-6 flex-column justify-content-between align-items-center text-secondary mb-2">
+        <h4 class="mb-0 d-flex text-body  align-items-center fw-bold">
+          <button (click)="goBack()" class="btn-icon h-40px w-40px btn mx-2 p-0 text-primary"
+            style="background-color: #fff;">
+            <span class="aya-arrow-right"></span>
+          </button>
+          <span>
+            المستخدمون :
+          </span>
+        </h4>
+      </div>
+
+    </div>
+
+    <div class="d-grid">
+      <div class="table-v2">
+        <div class="card p-4 col-md-12 ">
+          <div class="mg-toolbar d-flex col-md-12">
+            <div class="d-flex col-md-4">
+              <button routerLink="add" class="btn btn-sm btn-tool">
+                <span class="aya-plus icon icon-ksa"></span>
+                <span>
+                  إضافة
+                </span>
+              </button>
+            </div>
+            <div class="d-flex justify-content-end col-md-8 row">
+              <div class="col-md-2">
+                <sort-button [sortValue]="sortValue" (sortChanged)="sortByCreatedDate($event)" />
+              </div>
+              <div class="col-md-5">
+                <search-input (searchTermChange)="getAllUsers(1 , $event)" />
+              </div>
+            </div>
+          </div>
+
+          <mg-scroll-x>
+            <nz-table class="v2" [nzScroll]="{ x: '1000px' }" [nzLoading]="gettingUsers" #basicTable
+              [nzBordered]="false" [nzTableLayout]="'fixed'" [nzData]="users || []" [nzFrontPagination]="false"
+              [nzShowPagination]="false" #expandTable>
+              <thead>
+                <tr>
+                  <th (nzSortOrderChange)="query(column.key, $event)" [nzColumnKey]="column.key"
+                    [ngStyle]="{maxWidth: column.maxWidth + 'px'}" *ngFor="let column of listOfColumns"
+                    [nzEllipsis]="column.nzEllipsis" [nzShowSort]="column.sortable" [nzSortFn]="!!column.sortable"
+                    [nzSortDirections]="column.sortDirections || []">
+                    <strong>
+                      {{ column.name }}
+                    </strong>
+
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let user of basicTable.data;index as rowNumber">
+                  <tr class="pointer">
+                    <td>
+                      {{user.name}}
+                    </td>
+                    <td>
+                      {{user.email}}
+                    </td>
+                    <td>
+                      {{user.phoneNumber}}
+                    </td>
+                    <td (click)="$event.stopPropagation();" style="cursor: default;" class="text-center">
+                      <div class="d-flex justify-content-center ">
+                        <button [routerLink]="['add', user?.id]" routerLinkActive="active"
+                          class="btn btn-bg d-flex btn-bg flex-nowrap btn-sm mx-2 btn-toolbar">
+                          <span class="aya-edit icon-bg icon"></span>
+                          <span>
+                            تعديل
+                          </span>
+                        </button>
+                        <button (click)="showDeleteConfirmation(user?.id!)" routerLinkActive="active"
+                          class="btn btn-bg d-flex btn-bg flex-nowrap btn-sm mx-2 btn-toolbar">
+                          <span class="aya-trash icon-bg icon"></span>
+                          <span>
+                            حذف
+                          </span>
+                        </button>
+                      </div>
+                    </td>
+
+
+                  </tr>
+
+                </ng-container>
+              </tbody>
+            </nz-table>
+          </mg-scroll-x>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 text-center d-flex justify-content-center">
+      <ngb-pagination [collectionSize]="_total" [page]="_page" (pageChange)="getAllUsers($event)"
+        [pageSize]="_pageSize" />
+    </div>
+  </section>
+</ng-container>

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cyclosproject/ng-openapi-gen/master/ng-openapi-gen-schema.json",
+  "input": "http://35.180.224.195:61997/swagger/Common/swagger.json",
+  "output": "./src/app/core/backend/common",
+  "ignoreUnusedModels": false,
+  "module": "CommonApiModule",
+  "skipJsonSuffix": true,
+  "removeStaleFiles": true
+}

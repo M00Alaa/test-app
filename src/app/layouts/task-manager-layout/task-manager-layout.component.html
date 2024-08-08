@@ -1,0 +1,112 @@
+<div class="task_manager_wrapper">
+  <header class="bg-gradient-primary header border-bottom box-shadow">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-xl navbar-toggleable-sm navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand m-0 order-0" routerLink="/task-manager">
+            <span id="logo" class="d-none d-md-inline"><img src="/assets/images/ryad-logo-sm.svg"
+                style="width:auto; height:60px;"> </span>
+            <span id="logo" class="d-md-none"><img src="/assets/images/ryad-logo-sm.svg"
+                style="width:auto; height:60px;"> </span>
+            <span class="d-none ms-2 d-lg-inline-block">
+              نظام إدارة المـهام
+            </span>
+          </a>
+          <button class="navbar-toggler ms-auto order-3" type="button" (click)="collapse.toggle()">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div #collapse="ngbCollapse" [(ngbCollapse)]="isNavCollapsed"
+            class="justify-content-between order-last order-xl-2 navbar-collapse collapse">
+
+            <ul class="navbar-nav justify-content-start ms-xl-3 flex-grow-1">
+
+              <li class="nav-item" routerLink="/task-manager" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link">الرئيسية</a>
+              </li>
+
+              <li class="nav-item dropdown" display="dynamic" ngbDropdown>
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle>
+                  المهـــام
+                  <span class="aya-chevron-down1 small"></span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                  <li routerLink="/task-manager/tasks" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">
+                    <a class="dropdown-item">
+                      <span class="aya-minu-circles small align-middle"></span>
+                      قائمة المهام
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+              <li class="nav-item " routerLink="/task-manager/file-manager" routerLinkActive="active">
+                <a class="nav-link">ادارة
+                  الملفات</a>
+              </li>
+              <li class="nav-item" routerLink="/task-manager/meetings" routerLinkActive="active">
+                <a class="nav-link">الاجتماعات</a>
+              </li>
+              <!-- <li *ngIf="acc?.profession_Id == 1 || acc?.profession_Id == 2 || acc?.profession_Id == 5" class="nav-item dropdown" display="dynamic"  ngbDropdown>
+                                <a class="nav-link dropdown-toggle" ngbDropdownToggle>
+                                    الاعدادات
+                                    <span class="aya-chevron-down1 small"></span>
+                                </a>
+                                <ul class="dropdown-menu" ngbDropdownMenu>
+                                    <li  routerLink="/task-manager/users" routerLinkActive="active">
+                                        <a class="dropdown-item">
+                                            <span class="aya-user small align-middle"></span>
+                                            المستخدمين
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li> -->
+            </ul>
+          </div>
+          <mg-system-switcher [light]="true" class="me-2 order-xl-last  order-2"></mg-system-switcher>
+          <mg-account-dropdown [light]="true" class=" order-xl-last order-2"></mg-account-dropdown>
+
+
+        </div>
+      </nav>
+
+
+
+    </div>
+    <div class="container-fluid px-2 px-lg-3">
+
+      <div *ngIf="Breadcrumb" class="pb-4">
+        <h4 class="text-white">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+              <path
+                d="M8 0.805306L8 11.1931C8.00025 11.3528 7.94478 11.5088 7.84063 11.6416C7.73648 11.7744 7.58834 11.8778 7.41501 11.9388C7.24167 11.9998 7.05094 12.0157 6.86702 11.9843C6.68309 11.9529 6.51426 11.8758 6.38193 11.7627L0.277375 6.5711C0.0997445 6.41947 2.0521e-07 6.2141 2.14569e-07 6C2.23927e-07 5.7859 0.0997446 5.58053 0.277375 5.4289L6.38193 0.237332C6.51415 0.124296 6.68281 0.0471914 6.86657 0.0157816C7.05032 -0.0156282 7.2409 6.99245e-05 7.41416 0.060888C7.58742 0.121706 7.73557 0.224909 7.83986 0.357427C7.94415 0.489945 7.99988 0.645817 8 0.805306Z"
+                fill="#BFC9EF" />
+            </svg>
+          </span>
+          <span class="ms-1 small">
+            {{Breadcrumb}}
+          </span>
+        </h4>
+      </div>
+
+
+    </div>
+  </header>
+
+  <div [ngClass]="{'marginTopMinus': showWelcome}">
+    <div class="container-fluid h-100">
+      <main role="main" class="pb-3 pt-3 h-100">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </div>
+
+  <footer class="pt-3">
+    <div class="container text-center">
+      &copy; {{ now | date: 'yyyy'}} جميع الحقوق محفوظة - نظام إدارة المهام
+    </div>
+  </footer>
+</div>

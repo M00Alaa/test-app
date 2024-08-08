@@ -1,0 +1,23 @@
+/* Define Cairo Font Face with Multiple Weights */
+
+/* Regular */
+@font-face {
+  font-family: 'Cairo';
+  src: url('../../../fonts/ar/Cairo/Cairo-VariableFont_slnt\,wght.ttf') format('truetype');
+
+}
+
+
+
+
+/* Usage Example */
+body {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 500;
+}
+
+
+$font-family-sans-serif: 'cairo',
+sans-serif;
+$font-family-monospace: 'cairo',
+sans-serif;

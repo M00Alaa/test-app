@@ -1,0 +1,20 @@
+<div class="d-flex p-4 justify-content-center">
+
+  <form [formGroup]="form" (submit)="onSubmit()" nz-form class="col-md-10">
+
+    <nz-form-item class="mb-3" nzRequired>
+      <nz-form-control>
+        <nz-form-label [nzRequired]="true" [className]="' fw-bold'">
+          التخصص الرئيسي
+        </nz-form-label>
+        <input nz-input nzSize="large" name="name" formControlName="name" [placeholder]="'التخصص الرئيسي '" type="text"
+          id="name">
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button class="col-12 btn-ksa bg-gradient border-0 mt-5" nzSize="large" [nzType]="'primary'">
+      <span [ngClass]="itemDetails?.id ? 'aya-edit-2' : 'aya-plus' " class="px-2 icon"></span>
+      {{itemDetails?.id ? 'تعديل': 'اضافة'}}
+    </button>
+  </form>
+</div>

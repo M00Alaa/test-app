@@ -1,0 +1,97 @@
+<section class="d-grid h-100" style="grid-template-rows: auto 1fr;">
+  <div class="w-100 py-4 px-3 d-flex  bg-ksa  bg-white">
+    <div
+      class="mw-lg-600px text-nowrap d-flex flex-md-row col-lg-6 flex-column justify-content-between align-items-center text-secondary mb-2">
+      <h4 class="mb-0 d-flex text-body  align-items-center fw-bold">
+        <button (click)="goBack()" class="btn-icon h-40px w-40px btn mx-2 p-0 text-primary"
+          style="background-color: #fff;">
+          <span class="aya-arrow-right"></span>
+        </button>
+        <span>
+          {{itemDetails?.id ? itemDetails?.name : 'اضافة مستخدم'}} :
+        </span>
+      </h4>
+    </div>
+
+  </div>
+
+
+  <div class="card p-4 col-md-12">
+    <div class="justify-content-between pb-3 row h-100 flex-column">
+      <nz-form nzLayout="vertical" class="custom_form g-3 row" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <nz-form-item *ngIf="form.get('name')" class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label [nzRequired]="form | isRequired: 'name'" for="name">
+            الاسم</nz-form-label>
+          <nz-form-control [nzErrorTip]="'الاسم مطلوب'">
+            <input nz-input type="text" formControlName="name" nzSize="large" placeholder=" الاسم">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *ngIf="form.get('phoneNumber')" class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="name" [nzRequired]="form | isRequired: 'phoneNumber'">
+            الجوال</nz-form-label>
+          <nz-form-control [nzErrorTip]="' الجوال مطلوب'">
+            <input nz-input type="text" formControlName="phoneNumber" nzSize="large" placeholder=" الجوال">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *ngIf="form.get('email')" class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-control [nzErrorTip]="'  البريد الالكترونى مطلوب'">
+            <nz-form-label for="priority" [nzRequired]="form | isRequired: 'email'">
+              البريد الاكترونى
+            </nz-form-label>
+            <input nz-input nzSize="large" formControlName="email" placeholder="البريد الالكترونى">
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item *ngIf="form.get('roles')" class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="roles" [nzRequired]="form | isRequired: 'roles'">
+            دور المستخدم
+          </nz-form-label>
+          <nz-form-control [nzErrorTip]="' دور المستخدم مطلوب'">
+            <ng-select formControlName="roles" [placeholder]="' دور المستخدم'" [multiple]="true">
+              <ng-option *ngFor="let role of rolesList" [value]="role.name">
+                {{ 'Roles.' + role.name | translate }}
+              </ng-option>
+            </ng-select>
+          </nz-form-control>
+        </nz-form-item>
+
+
+        <ng-container *ngIf="form.get('password')">
+
+          <nz-form-item *ngIf="!itemDetails?.id" class="mb-0 col-md-6 col-xl-4 0">
+            <nz-form-label [nzRequired]="form | isRequired: 'password'" for="estimatedCost">
+              كلمة المرور </nz-form-label>
+            <nz-form-control [nzErrorTip]="'كلمة المرور مطلوبة'">
+              <input nz-input type="text" formControlName="password" nzSize="large" placeholder=" كلمة المرور">
+            </nz-form-control>
+          </nz-form-item>
+        </ng-container>
+      </nz-form>
+    </div>
+    <div class="d-flex col-md-12 justify-content-end ">
+      <div class="col-md-2 px-2">
+
+        <button nz-button nzSize="large" type="button"
+          [ngClass]="{'bg-blue': itemDetails?.id, 'bg-green': !itemDetails?.id}" (click)="onSubmit()" nz-button
+          class="px-4 w-100 fw-bold  btn-bg border-0 mt-4" nzSize="large">
+          <span>
+            {{itemDetails?.id ? 'تعديل' : 'حفــظ'}}
+          </span>
+
+        </button>
+      </div>
+      <div *ngIf="itemDetails?.id " class="col-md-2">
+        <button nz-button nzSize="large" type="button" [routerLink]="'../../'" nz-button
+          class="px-4 w-100 fw-bold bg-cancel  btn-bg border-0 mt-4" nzSize="large">
+          <span>
+            الغاء
+          </span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,99 @@
+<div (clickOutside)="open ? toggleLeftSider(): null" #sider style="grid-template-rows:auto 1fr ;"
+    class="border-start vh-100 border-light left-sidebar border-2">
+    <div class="text-end p-3">
+        <span (click)="toggleLeftSider()" class="aya-arrow-left pointer"></span>
+    </div>
+    <ngx-simplebar class="px-3 position-sticky sticky-lg-top px-md-3" #componentRef>
+        <div>
+            <div class="py-4">
+                <h5 class="mb-0 fw-bold">
+                    الإشعارات
+                </h5>
+            </div>
+            <div *ngIf="notification?.length === 0" class="pb-4 text-center">
+                لا توجد إشعارات جديدة
+            </div>
+            <div class="mb-1 d-flex gap-2" *ngFor="let item of notification">
+                <div>
+                    <div class="icon-box">
+                        <span class="aya-warning"></span>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <div [ngbTooltip]="item?.content" class="text-truncate fw-bold text-info">
+                        <span>
+                            {{item?.content}}
+                        </span>
+                    </div>
+                    <p>
+                        <small>
+                            {{item?.date | date}}
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="pb-4">
+                <h5 class="mb-0 fw-bold">
+                    الأنشطة
+                </h5>
+            </div>
+            <div *ngIf="activities?.length === 0" class="pb-4 text-center">
+                لا توجد أنشطة
+            </div>
+            <div class="mb-1 d-flex gap-2" *ngFor="let item of activities">
+                <div>
+                    <div class="icon-box">
+                        <span class="aya-warning"></span>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <div [ngbTooltip]="item?.content" class="text-truncate fw-bold text-info">
+                        <span>
+                            {{item?.content}}
+                        </span>
+                    </div>
+                    <p>
+                        <small>
+                            {{item?.date | date}}
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="pb-4">
+                <h5 class="mb-0 fw-bold">
+                    الرسائل
+                </h5>
+            </div>
+            <div *ngIf="messages?.length === 0" class="pb-4 text-center">
+                لا توجد رسائل جديدة
+            </div>
+            <div class="mb-1 d-flex gap-2" *ngFor="let item of messages">
+                <div>
+                    <div class="icon-box">
+                        <span class="aya-email small"></span>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <div [ngbTooltip]="item?.content" class="text-truncate fw-bold text-info">
+                        <span>
+                            {{item?.content}}
+                        </span>
+                    </div>
+                    <p>
+                        <small>
+                            {{item?.date | date}}
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </ngx-simplebar>
+
+    <!--? ================================================= -->
+
+
+</div>

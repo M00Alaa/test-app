@@ -1,0 +1,9 @@
+<ng-scrollbar [ngClass]="{
+  'is-scrollable': scrollbar.state.isHorizontallyScrollable,
+ 'left':scrollState === 'left',
+ 'isMoving':isMoving,
+ 'both':scrollState === 'both',
+  'right':scrollState === 'right'}" class="scrollBar" #scrollbar [position]="'native'" [track]="'horizontal'"
+  [appearance]="'standard'" autoHeightDisabled="false">
+  <ng-content></ng-content>
+</ng-scrollbar>

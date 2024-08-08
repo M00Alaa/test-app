@@ -1,0 +1,41 @@
+<form *ngIf="!disabled" [formGroup]="searchForm">
+  <input formControlName="searchedLocation" #autoInput placeholder="ابحث.." class="mb-3" nz-input
+    [nzAutocomplete]="autoComplete">
+  <nz-autocomplete (selectionChange)="selectLocation($event)" [compareWith]="compareWith" [nzOverlayClassName]="'z-3'"
+    #autoComplete>
+    <nz-auto-option *ngIf="searching">
+      جاري البحث..
+    </nz-auto-option>
+    <nz-auto-option *ngFor="let item of suggestions" [nzValue]="item">
+      {{item?.label}}
+    </nz-auto-option>
+  </nz-autocomplete>
+</form>
+
+
+
+<div style="min-height: 400px;height: 100%;" leaflet [leafletOptions]="options" [leafletLayers]="layers"
+  (leafletMapReady)="onMapReady($event)">
+
+
+</div>
+
+<div class="d-flex mt-3 justify-content-between flex-wrap">
+  <div class="p-3">
+    <span class="text-primary">
+      خط الطول:
+    </span>
+    <span>
+      {{selectedLocation.lat !== null ? selectedLocation.lat : '-'}}
+    </span>
+  </div>
+  <div class="p-3">
+    <span class="text-primary">
+      خط العرض:
+    </span>
+    <span>
+      {{selectedLocation.lng !== null ? selectedLocation.lng : '-'}}
+    </span>
+  </div>
+
+</div>

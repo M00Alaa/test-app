@@ -1,0 +1,122 @@
+<div class="dropdown d-inline-block" ngbDropdown>
+    <button style="height: auto;" type="button" class="btn lh-1 py-0  noti-icon" id="page-header-notifications-dropdown"
+        ngbDropdownToggle>
+        <i class="bx bx-bell bx-tada align-middle font-size-26 opacity-75"></i>
+        <small *ngIf="unreadCount > 0" style="top: -4px;" class="badge bg-danger py-1 rounded-pill">
+            {{unreadCount}}</small>
+    </button>
+    <div style="left: 0;" class="dropdown-menu overflow-hidden dropdown-menu-lg dropdown-menu-end p-0" ngbDropdownMenu
+        aria-labelledby="page-header-notifications-dropdown">
+        <div class="p-3">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h6 class="m-0">{{ 'الإشعارات' | translate}} </h6>
+                </div>
+                <div class="col-auto">
+                    <a href="javascript: void(0);" (click)="readAll()" class="small">{{
+                        'تحديد كل الإشعارات كـ مقروءة' | translate}}</a>
+                </div>
+            </div>
+        </div>
+        <ngx-simplebar #simplebar [options]="scrollbarOptions"   style="position: relative; max-height: 350px;">
+            <div *ngFor="let item of notifs" class="text-reset border-bottom notification-item">
+                <div (click)="redirectTo(item)" class="media  pointer  align-items-center position-relative"
+                    [ngClass]="{'bg-primary bg-opacity-10': !item.read}">
+                    <span (click)="readNotification(item)" *ngIf="!item.read" class="noti-check pointer"
+                        title="تحديد كمقروء">
+                        <span class="  bx bx-check-circle font-size-20 text-primary"></span>
+                    </span>
+                    <span *ngIf="item.read" class="noti-check pointer" title="مقروء">
+                        <span class=" bx bx-check-double  font-size-20 text-info"></span>
+                    </span>
+
+                    <div class="avatar-xs me-3">
+                        <ng-template [ngTemplateOutlet]="iconTemp"
+                            [ngTemplateOutletContext]="{type: item?.type}"></ng-template>
+                    </div>
+                    <div class="media-body">
+                        <!-- ?? title -->
+                        <h6 class="mt-0 mb-1 noti-title">
+                            <span *ngIf="!item.read" class="bg-danger noti-badge"></span>
+                            <ng-template [ngTemplateOutlet]="titleTemp"
+                                [ngTemplateOutletContext]="{type: item?.type}"></ng-template>
+                        </h6>
+                        <div class="font-size-12 text-muted">
+                            <!-- ?? description -->
+                            <p class="mb-1">
+                                <ng-template [ngTemplateOutlet]="descTemp"
+                                    [ngTemplateOutletContext]="{type: item?.type}"></ng-template>
+                            </p>
+                            <!-- ?? date -->
+                            <p class="mb-0"><i class="mdi align-middle mdi-clock-outline"></i>
+                                {{ item?.createdate | date: 'd MMMM yyyy hh:mm a'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="gettingNotifs" class="text-center py-5 h-100">
+                <div role="status" class="spinner-border text-primary m-1"><span class="sr-only">Loading...</span></div>
+            </div>
+        </ngx-simplebar>
+        <div *ngIf="!notifs" class="text-center py-5 h-100">
+            <div role="status" class="spinner-border text-primary m-1"><span class="sr-only">Loading...</span></div>
+        </div>
+        <div *ngIf="notifs && notifs?.length === 0" class="text-center py-5 h-100">
+
+            لا يوجد إشعارات جديدة
+        </div>
+        <!-- <div class="p-2 border-top d-grid">
+            <a class="btn btn-sm btn-link font-size-14 text-center"
+                href="javascript:void(0)">
+                <i class="mdi mdi-arrow-right-circle me-1"></i> {{
+                'عرض كل الإشعارات' | translate}}
+            </a>
+        </div> -->
+    </div>
+</div>
+<!-- ?? title  -->
+<ng-template #titleTemp let-type="type">
+    <div [ngSwitch]="type">
+        <div *ngSwitchCase="'COURSE'">
+            طلب حجز كورس
+        </div>
+        <div *ngSwitchCase="'COMP'">
+            طلب حجز مسابقة
+        </div>
+      
+
+
+
+    </div>
+</ng-template>
+
+<!-- ?? desc  -->
+<ng-template #descTemp let-type="type">
+    <div [ngSwitch]="type">
+        <div *ngSwitchCase="'COURSE'">
+           لديك طلب حجز كورس جديد، اضغط لرؤية التفاصيل
+        </div>
+        <div *ngSwitchCase="'COMP'">
+           لديك حجز مسابقة جديد، اضغط لرؤية التفاصيل
+        </div>
+      
+        
+    </div>
+</ng-template>
+<!-- ?? icon  -->
+<ng-template #iconTemp let-type="type">
+    <ng-container [ngSwitch]="type">
+        <ng-container *ngSwitchCase="'COURSE'">
+            <span class="avatar-title bg-info rounded-circle font-size-16">
+                <i class="bx mdi mdi-book"></i>
+            </span>
+        </ng-container>
+        <ng-container *ngSwitchCase="'COMP'">
+            <span class="avatar-title bg-info rounded-circle font-size-16">
+                <i class="bx mdi mdi-trophy"></i>
+            </span>
+        </ng-container>
+      
+    
+    </ng-container>
+</ng-template>

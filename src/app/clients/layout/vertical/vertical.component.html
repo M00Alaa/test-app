@@ -1,0 +1,22 @@
+<div id="layout-wrapper">
+
+  <app-sidebar class="sticky-lg-top" [isCondensed]="isCondensed"></app-sidebar>
+
+  <div>
+    <div class="main-content h-100">
+      <app-topbar (settingsButtonClicked)="onSettingsButtonClicked()" class="sticky-lg-top"
+        (mobileMenuButtonClicked)="onToggleMobileMenu()">
+      </app-topbar>
+      <div class="px-2 bg-ksa px-md-3 mw-1920px w-100 mx-auto">
+        <!-- content -->
+        <router-outlet></router-outlet>
+      </div>
+
+      <!-- footer -->
+      <!-- <app-footer></app-footer> -->
+    </div>
+  </div>
+
+
+
+</div>

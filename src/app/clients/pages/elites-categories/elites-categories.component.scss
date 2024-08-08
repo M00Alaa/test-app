@@ -1,0 +1,88 @@
+.bg-ksa {
+  background-color: #f2f3f5 !important;
+}
+
+.tag-container {
+  display: inline-block;
+  margin: 5px;
+}
+
+.tag {
+  display: inline-block;
+  color: #545454;
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  position: relative;
+  border: 1px solid #45a7de;
+}
+
+.dropdown-content {
+  width: 100%;
+  padding: 10px;
+  border-top: 1px solid #E9E9E9;
+  background-color: #f9f9f9;
+  /* Optional: Change background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Optional: Add shadow for better visibility */
+  border-radius: 0 0 10px 10px;
+  /* Match the border-radius of the category item */
+  margin-top: -1px;
+  /* Ensure border-top overlap */
+}
+
+
+.delete-icon {
+  margin-left: 8px;
+  cursor: pointer;
+  color: #45a7de;
+  padding: 4px;
+  border: 1px solid #45a7de;
+  border-radius: 50%;
+}
+
+.tag-container .tag:hover .delete-icon {
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+
+hr {
+  color: #45a7de;
+}
+
+
+
+.category-container {
+  width: 100%;
+}
+
+.category-item {
+  background-color: #fff;
+}
+
+.subcategory-list {
+  margin-top: -1px;
+  /* Ensure no gap between category and subcategory list */
+}
+
+.subcategory-item {
+  border: 1px solid #E9E9E9;
+  border-radius: 7px;
+}
+
+.subcategory-item:last-child {
+  border-bottom: none;
+  /* Remove bottom border for the last subcategory item */
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.pointer {
+  cursor: pointer;
+}

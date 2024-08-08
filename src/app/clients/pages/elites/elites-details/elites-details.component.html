@@ -1,0 +1,217 @@
+<section class="d-grid h-100" style="grid-template-rows: auto 1fr;">
+  <div class="w-100 py-4 px-3 d-flex  bg-ksa  bg-white">
+    <div
+      class="mw-lg-600px text-nowrap d-flex flex-md-row col-lg-6 flex-column justify-content-between align-items-center text-secondary mb-2">
+      <h4 class="mb-0 d-flex text-body  align-items-center fw-bold">
+        <button (click)="goBack()" class="btn-icon h-40px w-40px btn mx-2 p-0 text-primary"
+          style="background-color: #fff;">
+          <span class="aya-arrow-right"></span>
+        </button>
+        <span>
+          {{itemDetails?.id ? itemDetails?.name :"" }} :
+        </span>
+      </h4>
+    </div>
+
+  </div>
+
+
+  <div class="card p-4 col-md-12">
+    <div class="justify-content-between pb-3 row h-100 flex-column">
+      <form nzLayout="vertical" class="custom_form g-3 row">
+        <nz-form-item class="mb-0 d-flex justify-content-center col-md-6 col-xl-2">
+          <ngx-dropzone class="h-150 w-75 position-relative border-0" [multiple]="false" accept="image/*" style="
+            background: whitesmoke; border-radius: 50%; border:1px solid #6DCBFF !important; overflow: hidden;">
+            <div
+              class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 z-10">
+            </div>
+            <custom-dropzone-preview class="w-100 h-100 m-0" *ngIf="itemDetails?.profilePictures"
+              [url]="domain + itemDetails?.profilePictures">
+            </custom-dropzone-preview>
+          </ngx-dropzone>
+
+        </nz-form-item>
+        <nz-form-item class="mb-5 col-12 col-md-6 col-xl-10" style="
+        margin-top: 68px;
+    ">
+          <nz-form-label for="name">
+            الاسم</nz-form-label>
+          <nz-form-control>
+            <label nz-input class="FC" nzSize="large">
+              {{itemDetails?.name || 'لايوجد'}}</label>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="state">
+            المدينة
+          </nz-form-label>
+          <nz-form-control>
+            <label nz-input class="FC" nzSize="large">
+              {{itemDetails?.city || 'لايوجد'}}
+            </label>
+
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-control>
+            <nz-form-label for="priority">
+              البريد الاكترونى
+            </nz-form-label>
+            <label nz-input class="FC" nzSize="large">
+              {{itemDetails?.email || 'لايوجد'}}
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-control>
+            <nz-form-label for="priority">
+              الجوال
+            </nz-form-label>
+            <label nz-input class="FC" nzSize="large">
+              {{itemDetails?.phoneNumber || 'لايوجد'}}
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-control>
+            <nz-form-label for="priority">
+              المنصب
+            </nz-form-label>
+            <label nz-input class="FC" nzSize="large">
+              {{itemDetails?.position || 'لايوجد'}}
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-md-6 col-xl-4 0">
+          <nz-form-label for="estimatedCost">
+            جهة العمل </nz-form-label>
+          <nz-form-control>
+            <label nz-input class="FC" nzSize="large">
+              {{itemDetails?.workplace || 'لايوجد' }}
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="state">
+            المؤهل
+          </nz-form-label>
+          <nz-form-control>
+            <label class="FC" nz-input class="FC" nzSize="large">
+              {{ itemDetails?.qualification || 'لايوجد' }}
+
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-md-6 col-xl-4 1 xl-3">
+          <nz-form-label for="actualCost">
+            التواصل الاجتماعي
+          </nz-form-label>
+
+          <nz-form-control>
+            <a nz-input [href]="itemDetails?.socialUrl" target="_blank">
+              {{itemDetails?.socialUrl || 'لايوجد' }}
+            </a>
+          </nz-form-control>
+
+        </nz-form-item>
+
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="state">
+            التخصص الأساسي
+          </nz-form-label>
+          <nz-form-control>
+            <label nz-input class="FC" nzSize="large">
+
+              {{itemDetails?.mainCategory || 'لايوجد'}}
+
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="state">
+            التخصص الفرعى
+          </nz-form-label>
+          <nz-form-control>
+            <label nz-input class="FC" nzSize="large">
+              {{itemDetails?.category || 'لايوجد'}}
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-md-6 col-xl-4">
+          <nz-form-label [nzFor]="'attachment'">السيرة الذاتية</nz-form-label>
+          <nz-form-control>
+            <div class="row text-nowrap d-block" *ngIf="itemDetails?.attachments?.length !==0">
+              <ng-container *ngIf="itemDetails?.attachments?.length">
+                <div class="col-md-3" *ngFor="let attachment of itemDetails?.attachments">
+                  <div>
+                    <div (click)="downloadAttachment(attachment)">
+                      <span class="aya-file" style="color: #41a6de;
+                    font-size: larger;">
+                      </span>
+                      <span>
+                        {{extractFileName(attachment)}}
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </ng-container>
+            </div>
+
+            <span class="FC" *ngIf="itemDetails?.attachments?.length === 0">لا يوجد مرفقات</span>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mb-2 grid-col-full">
+          <nz-form-control>
+            <nz-form-label for="BestAchievement">ابرز
+              الانجاز</nz-form-label>
+            <nz-form-control>
+              <label nz-input class="FC" nzSize="large">
+                {{itemDetails?.bestAchievement || 'لايوجد'}}
+              </label>
+            </nz-form-control>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-2 grid-col-full">
+          <nz-form-control>
+            <nz-form-label>
+              الملاحظات</nz-form-label>
+            <nz-form-control>
+              <label nz-input class="FC" nzSize="large">
+                {{itemDetails?.notes || 'لايوجد'}}
+              </label>
+            </nz-form-control>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+
+    <div *ngIf="acc?.roles?.includes('Admin')" class="d-flex col-md-12 justify-content-end ">
+      <div class="col-md-2 px-2">
+
+        <button *appRole="[roles.Admin]" [routerLink]="['../../add', itemDetails?.id]" nz-button nzSize="large"
+          type="button" nz-button class="px-4 w-100 fw-bold  bg-blue btn-bg border-0 mt-4" nzSize="large">
+          <span>
+            تعديل
+          </span>
+
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button *appRole="[roles.Admin]" nz-button nzSize="large" type="button" (click)="showDeleteConfirmation()"
+          nz-button class="px-4 w-100 fw-bold bg-cancel  btn-bg border-0 mt-4" nzSize="large">
+          <span>
+            حذف
+          </span>
+
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</section>

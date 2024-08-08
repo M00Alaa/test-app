@@ -1,0 +1,39 @@
+.bg-ksa {
+  background-color: #f2f3f5 !important;
+}
+
+
+
+.tag-container {
+  display: inline-block;
+  margin: 5px;
+}
+
+.tag {
+  display: inline-block;
+  color: #545454;
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  position: relative;
+  border: 1px solid #45a7de;
+}
+
+.delete-icon {
+  margin-left: 8px;
+  cursor: pointer;
+  color: #45a7de;
+  padding: 4px;
+  border: 1px solid #45a7de;
+  border-radius: 50%;
+}
+
+.tag-container .tag:hover .delete-icon {
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+
+hr {
+  color: #45a7de;
+}

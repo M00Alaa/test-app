@@ -1,0 +1,106 @@
+<!-- ========== Left Sidebar Start ========== -->
+
+<ng-template #contentTemplate>
+  <!-- ?? profile -->
+  <div class="profile ">
+
+    <a class="navbar-brand" routerLink="/">
+      <span id="logo" class="d-none d-md-inline "><img src="/assets/images/ryad-logo-sm.svg" class=""
+          style="width:auto; height:50px;"> </span>
+      <span id="logo" class="d-md-none "><img src="/assets/images/ryad-logo-sm.svg" class=""
+          style="width:auto; height:50px;"> </span>
+      <span class="d-none fw-bold ms-2 d-lg-inline-block top_text">
+        نظام إدارة المشريع
+      </span>
+    </a>
+  </div>
+  <!--- Sidemenu -->
+  <div id="sidebar-menu">
+    <!-- Left Menu Start -->
+    <ul class="metismenu list-unstyled" id="side-menu" #sideMenu>
+      <!-- {{menuItems}} -->
+      <ng-container *ngFor="let item of menuItems">
+        <ng-container *appRole="item.roles || []">
+          <li class="menu-title" *ngIf="item.isTitle">
+            <div class="d-flex align-items-center">
+              <span class="flex-fill bg-light opacity-50 d-inline-flex" style="height: 1px;"></span>
+              <span class="px-2">{{ item.label | translate }}</span>
+              <span class="flex-fill bg-light opacity-50 d-inline-flex" style="height: 1px;"></span>
+            </div>
+          </li>
+          <li (click)="clickElWhenCollapsed()" *ngIf="!item.isTitle && !item.isLayout">
+            <a *ngIf="hasItems(item)" href="javascript:void(0);" class="is-parent"
+              [ngClass]="{'has-arrow': !item.badge, 'has-dropdown': item.badge}">
+              <span class="bx bx-chevron-right text-gray-50 arrow_icon  fs-5"></span>
+              <i style="width: 20px;" class="text-gray-50 text-center  fs-6 {{item.icon}}" *ngIf="item.icon"></i>
+              <span> {{ item.label | translate }}</span>
+              <span class="badge rounded-pill float-end bg-{{item.badge.variant}}" *ngIf="item.badge">
+                {{item.badge.text | translate}}</span>
+            </a>
+
+            <a [routerLink]="item.link" [queryParams]="item?.queryParams || null" *ngIf="!hasItems(item)"
+              class="side-nav-link-ref"
+              [routerLinkActiveOptions]="item?.queryParams ?routesOptions :{exact: item?.exact}"
+              routerLinkActive="active">
+              <span class="bx bx-chevron-right text-gray-50 arrow_icon  fs-5"></span>
+              <i style="width: 20px;" class=" text-gray-50 text-center fs-6 {{item.icon}}" *ngIf="item.icon"></i>
+              <span> {{ item.label | translate }}</span>
+              <span class="badge rounded-pill bg-{{item.badge.variant}} float-end" *ngIf="item.badge">
+                {{item.badge.text | translate}}</span>
+            </a>
+
+            <ul *ngIf="hasItems(item)" class="sub-menu" aria-expanded="false">
+
+              <li *ngFor="let subitem of item.subItems">
+                <ng-container *appRole="subitem.roles || []">
+                  <a [routerLink]="subitem.link" [queryParams]="subitem?.queryParams || null" *ngIf="!hasItems(subitem)"
+                    class="side-nav-link-ref fw-semibold" [attr.data-parent]="subitem.parentId"
+                    [routerLinkActiveOptions]="subitem?.queryParams ? routesOptions : {exact: subitem?.exact}"
+                    routerLinkActive="active">
+                    <span class="aya-chevron-left small me-1"></span>
+                    {{ subitem.label | translate}}
+                  </a>
+                  <a *ngIf="hasItems(subitem)" class="side-nav-link-a-ref has-arrow" href="javascript:void(0);"
+                    [attr.data-parent]="subitem.parentId">
+                    {{ subitem.label | translate}}
+                  </a>
+                  <ul *ngIf="hasItems(subitem)" class="sub-menu mm-collapse" aria-expanded="false">
+                    <li *ngFor="let subSubitem of subitem.subItems">
+                      <ng-container *appRole="subSubitem.roles || []">
+                        <a [attr.data-parent]="subSubitem.parentId"
+                          [routerLinkActiveOptions]="subSubitem?.queryParams ?routesOptions :{exact: subSubitem?.exact}"
+                          [queryParams]="subSubitem?.queryParams || null" [routerLink]="subSubitem.link"
+                          routerLinkActive="active" class="side-nav-link-ref">
+                          {{ subSubitem.label | translate }}
+                        </a>
+                      </ng-container>
+                    </li>
+                  </ul>
+                </ng-container>
+              </li>
+            </ul>
+          </li>
+        </ng-container>
+      </ng-container>
+    </ul>
+  </div>
+
+</ng-template>
+<!-- Sidebar -->
+
+<div style="grid-template-rows: 1fr auto;" class="vertical-menu  border-end border-light border-2">
+  <ngx-simplebar class="" #componentRef>
+    <div *ngIf="!isCondensed">
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+    <div *ngIf="isCondensed">
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+  </ngx-simplebar>
+  <!-- <div class="text-center">
+    <img height="30" class="mb-md-5 logo-lg mb-3 mx-auto" [src]="logos?.dark_sm" alt="">
+    <img height="30" class="logo-sm mb-3 mx-auto" [src]="logos?.dark_sm" alt="">
+
+  </div> -->
+</div>
+<!-- Left Sidebar End -->

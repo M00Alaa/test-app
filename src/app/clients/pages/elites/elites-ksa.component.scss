@@ -1,0 +1,199 @@
+.bg-ksa {
+  background-color: #f2f3f5 !important;
+}
+
+.os-toolbar {
+  border-radius: 8px 8px 0px 0px;
+  border: 1px solid #E6E6E6;
+  background: #EEF5F8;
+  padding: 11px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 120px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.btn-tool {
+  background-color: #ffff;
+  color: #545454;
+  border: 1px solid #3ca3dd;
+  border-radius: 8px;
+}
+
+.icon-ksa {
+  color: #3ca3dd;
+}
+
+.td-ksa {
+  vertical-align: middle !important;
+  text-align: center !important;
+  font-weight: 600;
+  color: #545454;
+  font-size: 14px;
+
+}
+
+.custom-small-font {
+  font-size: 12px;
+  /* Adjust the size as needed */
+}
+
+.aya-dots-2 {
+  padding-left: 10px;
+  margin-bottom: 7px;
+  transform: rotate(90deg);
+}
+
+.icon-bg {
+  color: #545454;
+}
+
+.btn-toolbar {
+  background-color: #E6E6E6;
+  color: #545454;
+}
+
+.btn-toolbar:focus,
+.btn-toolbar:active,
+.btn-toolbar:hover {
+  background-color: #42a7e1;
+  color: #E6E6E6;
+
+  .icon-bg {
+    color: #E6E6E6;
+  }
+}
+
+// ::ng-deep .ng-select .ng-arrow-wrapper {
+//   color: #3da3dd !important;
+// }
+
+// ::ng-deep .ng-select .ng-select-container {
+//   background-color: #dfebf3 !important;
+//   border: 1px solid #3da3dd;
+//   border-radius: 8px;
+// }
+
+/* Mobile Styles */
+// @media only screen and (max-width: 768px) {
+//   .d-grid {
+//     display: block;
+//   }
+
+//   .table-v2 {
+//     overflow-x: auto;
+//   }
+
+//   .card {
+//     padding: 1rem;
+//   }
+
+//   .mw-lg-600px {
+//     width: 100%;
+//   }
+
+//   .text-nowrap {
+//     white-space: normal;
+//   }
+
+//   .d-flex {
+//     display: block;
+//   }
+
+//   .justify-content-between,
+//   .justify-content-end {
+//     justify-content: start;
+//   }
+
+//   .col-md-12,
+//   .col-md-4,
+//   .col-md-8,
+//   .col-md-5 {
+//     width: 100%;
+//   }
+
+//   .row {
+//     display: block;
+//   }
+
+//   h4.mb-0 {
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//   }
+
+//   button.btn-icon {
+//     margin-right: auto;
+//   }
+// }
+
+
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+  .table-v2 {
+    display: none;
+  }
+
+  .accordion {
+    display: block;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 769px) {
+
+  // ::ng-deep .ng-select .ng-arrow-wrapper {
+  //   color: #3da3dd !important;
+  // }
+
+  // ::ng-deep .ng-select .ng-select-container {
+  //   background-color: #ffff !important;
+  //   //color: #000 !important;
+  // }
+
+  .table-v2 {
+    display: block;
+  }
+
+  .accordion {
+    display: none;
+  }
+}
+
+.main-acc {
+  background-color: #A5DEFF;
+}
+
+/* Define styles for the main container */
+.elite-info {
+  background-color: #ffff;
+  /* Set white background */
+  padding: 1rem;
+  /* Add some padding for spacing */
+}
+
+ul.list-unstyled {
+  padding: 0;
+}
+
+ul.list-unstyled li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  /* Add some spacing between items */
+}
+
+ul.list-unstyled li div {
+  padding: 0;
+}
+
+ul.list-unstyled li div.col-4 {
+  font-weight: bold;
+}
+
+ul.list-unstyled li div.col-8 {
+  text-align: right;
+  /* Adjust based on your text direction */
+}

@@ -1,0 +1,207 @@
+<section class="d-grid h-100" style="grid-template-rows: auto 1fr;">
+  <div class="w-100 py-4 px-3 d-flex  bg-ksa  bg-white">
+    <div
+      class="mw-lg-600px text-nowrap d-flex flex-md-row col-lg-6 flex-column justify-content-between align-items-center text-secondary mb-2">
+      <h4 class="mb-0 d-flex text-body  align-items-center fw-bold">
+        <button (click)="goBack()" class="btn-icon h-40px w-40px btn mx-2 p-0 text-primary"
+          style="background-color: #fff;">
+          <span class="aya-arrow-right"></span>
+        </button>
+        <span>
+          {{itemDetails?.id ? itemDetails?.name : ' الملف الشخصى'}} :
+        </span>
+      </h4>
+    </div>
+
+  </div>
+
+
+  <div class="card p-4 col-md-12">
+    <div class="justify-content-between pb-3 row h-100 flex-column">
+      <nz-form nzLayout="vertical" class="custom_form g-3 row" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <nz-form-item class="mb-0 d-flex justify-content-center col-md-6 col-xl-2">
+          <ngx-dropzone class="h-150 w-75 position-relative border-0" [multiple]="false" accept="image/*"
+            (change)="onSelectImage('Profile', $event)" style="
+            background: whitesmoke; border-radius: 50%; border:1px solid #6DCBFF !important; overflow: hidden;">
+            <div
+              class="d-flex justify-content-center align-items-center position-absolute top-0 start-0 w-100 h-100 z-10">
+              <img src="../../../../../assets/images/camera.svg" alt="" srcset="">
+            </div>
+            <ngx-dropzone-image-preview class="w-100 h-100" *ngIf="form.controls.profilePictures.value"
+              [file]="form.controls.profilePictures.value" [removable]="true" (removed)="onRemoveImage()">
+              <ngx-dropzone-label>
+
+              </ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+            <custom-dropzone-preview class="w-100 h-100 m-0"
+              *ngIf="!form.controls.profilePictures.value && itemDetails?.profilePictures"
+              [url]="domain + itemDetails?.profilePictures">
+            </custom-dropzone-preview>
+          </ngx-dropzone>
+
+        </nz-form-item>
+        <nz-form-item *ngIf="form.get('Name')" class="mb-0 col-12 col-md-6 col-xl-10">
+          <nz-form-label for="name" [nzRequired]="form | isRequired: 'Name'">
+            الاسم</nz-form-label>
+          <nz-form-control [nzErrorTip]="'الاسم مطلوب'">
+            <input nz-input type="text" formControlName="Name" nzSize="large" placeholder=" الاسم">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="Email">
+            البريد الالكترونى</nz-form-label>
+          <nz-form-control>
+            <input nz-input type="email" formControlName="Email" nzSize="large" placeholder=" البريد الالكترونى">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="PhoneNumber">
+            الجوال</nz-form-label>
+          <nz-form-control>
+            <input nz-input type="text" formControlName="PhoneNumber" nzSize="large" placeholder=" الجوال">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item *ngIf="form.get('CityId')" class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="state" [nzRequired]="form | isRequired: 'CityId'">
+            المدينة
+          </nz-form-label>
+          <nz-form-control [nzErrorTip]="'المدينة مطلوبة'">
+            <ng-select formControlName="CityId" [placeholder]="' المدينة'">
+              <ng-option *ngFor="let city of cities" [value]="city.id">
+                {{city.name}}
+              </ng-option>
+            </ng-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-control>
+            <nz-form-label for="priority">
+              المنصب
+            </nz-form-label>
+            <input nz-input nzSize="large" formControlName="Position" placeholder=" المنصب">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-md-6 col-xl-4 0">
+          <nz-form-label for="estimatedCost">
+            جهة العمل </nz-form-label>
+          <nz-form-control>
+            <input nz-input type="text" formControlName="Workplace" nzSize="large" placeholder="جهة العمل">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="state">
+            المؤهل
+          </nz-form-label>
+          <nz-form-control>
+            <ng-select formControlName="QualificationId" [placeholder]="' المؤهل'">
+              <ng-option *ngFor="let qualification of qualifications" [value]="qualification.id">
+                {{qualification.name}}
+              </ng-option>
+            </ng-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-md-6 col-xl-4 1 xl-3">
+          <nz-form-label for="actualCost">
+            التواصل الاجتماعي
+          </nz-form-label>
+          <nz-form-control>
+            <input formControlName="SocialUrl" nz-input type="text" nzSize="large" placeholder="  التواصل الاجتماعي">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="state">
+            التخصص الرئيسي
+          </nz-form-label>
+          <nz-form-control>
+            <ng-select formControlName="MainCategoryId" [placeholder]="'  التخصص الرئيسي'"
+              (change)="onMainCategoryChange($event)">
+              <ng-option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+              </ng-option>
+            </ng-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-4">
+          <nz-form-label for="state">
+            التخصص الفرعي
+          </nz-form-label>
+          <nz-form-control>
+            <ng-select formControlName="CategoryId" [placeholder]="' التخصص الفرعي'">
+              <ng-option *ngFor="let category of subCategories" [value]="category.id">
+                {{category.name}}
+              </ng-option>
+            </ng-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 col-md-6 col-xl-12">
+          <nz-form-label [nzFor]="'attachment'">السيرة الذاتية</nz-form-label>
+          <ngx-dropzone class="w-100 position-relative border-primary" style="
+          background: whitesmoke; height: 110px;
+      " [multiple]="false" accept="image/*, .pdf, .doc, .docx, .txt, .csv" (change)="onSelect($event)">
+            <ngx-dropzone-label>
+              أرفق السيرة الذاتية هنا ..
+            </ngx-dropzone-label>
+            <ng-container *ngIf="!itemDetails?.id">
+              <ng-container *ngIf="form.controls.attachmentFiles.value">
+                <custom-dropzone-file-preview *ngFor="let file of form.controls.attachmentFiles.value" [file]="file"
+                  [removable]="true" (removed)="onRemove($event)">
+                  <ngx-dropzone-label> <img src="../../../../../assets/images/paperclip-2.svg" alt="" srcset=""> {{
+                    file.name }} </ngx-dropzone-label>
+                </custom-dropzone-file-preview>
+              </ng-container>
+            </ng-container>
+            <custom-dropzone-file-preview [removable]="true" (removed)="removeFile()" class="m-2" [_url]="domain + url"
+              *ngFor="let url of itemDetails?.attachments">
+              <ngx-dropzone-label (click)="downloadAttachment(url)"> {{extractFileName(url) }} <img
+                  src="../../../../../assets/images/paperclip-2.svg" alt="" srcset="">
+
+              </ngx-dropzone-label>
+            </custom-dropzone-file-preview>
+
+          </ngx-dropzone>
+        </nz-form-item>
+
+        <nz-form-item class="mb-0 grid-col-full">
+          <nz-form-control>
+            <nz-form-label for="BestAchievement">ابرز
+              الانجاز</nz-form-label>
+            <textarea placeholder=" ابرز الانجاز" nz-input nzSize="large" formControlName="BestAchievement"
+              id="BestAchievement" cols="30" rows="4"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="mb-0 grid-col-full">
+          <nz-form-control>
+            <nz-form-label for="Notes">
+              الملاحظات</nz-form-label>
+            <textarea placeholder="الملاحظات" nz-input nzSize="large" formControlName="Notes" id="Notes" cols="30"
+              rows="4"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-form>
+    </div>
+    <div class="d-flex col-md-12 justify-content-end ">
+      <div class="col-md-2 px-2">
+
+        <button nz-button nzSize="large" type="button" [nzLoading]="submitting"
+          [ngClass]="{'bg-blue': itemDetails?.id, 'bg-green': !itemDetails?.id}" (click)="onSubmit()" nz-button
+          class="px-4 w-100 fw-bold  btn-bg border-0 mt-4" nzSize="large">
+          <span>
+            {{itemDetails?.id ? 'تعديل' : 'حفــظ'}}
+          </span>
+
+        </button>
+      </div>
+      <div *ngIf="itemDetails?.id " class="col-md-2">
+        <button nz-button nzSize="large" type="button" [routerLink]="'../../'" nz-button
+          class="px-4 w-100 fw-bold bg-cancel  btn-bg border-0 mt-4" nzSize="large">
+          <span>
+            الغاء
+          </span>
+
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>

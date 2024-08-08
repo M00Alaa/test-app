@@ -1,0 +1,12 @@
+<span class="d-inline-block mw-75px" *ngIf="user?.lockoutEnd; else openTemp">
+    <span class="badge w-100 bg-warning">
+        متوقف
+    </span>
+</span>
+<ng-template #openTemp>
+    <span class="d-inline-block mw-75px" >
+        <span class="badge w-100 bg-success">
+            نشط
+        </span>
+    </span>
+</ng-template>

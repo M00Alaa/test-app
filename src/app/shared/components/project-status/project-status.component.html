@@ -1,0 +1,32 @@
+<ng-container *ngIf="!withoutBG && status;else withoutBGTemp">
+    <span  [ngSwitch]="status">
+        <span *ngSwitchCase="allStatus.Planning">
+            <span class="badge shadow-sm bg-primary-50 text-white">
+                {{status || '' | translate}}
+            </span>
+        </span>
+        <span *ngSwitchCase="allStatus.Started">
+            <span class="badge shadow-sm bg-secondary text-white">
+                {{status || '' | translate}}
+            </span>
+        </span>
+        <span *ngSwitchCase="allStatus.Execution">
+            <span class="badge shadow-sm bg-warning">
+                {{status || '' | translate}}
+            </span>
+        </span>
+            <span *ngSwitchCase="allStatus.Closed">
+                <span class="badge shadow-sm bg-success">
+                    {{status || '' | translate}}
+                </span>
+            </span>
+        <span *ngSwitchDefault>
+            <span class="badge shadow-sm bg-secondary text-white">
+                {{status || '' | translate}}
+            </span>
+        </span>
+    </span>
+</ng-container>
+<ng-template #withoutBGTemp>
+    {{status || '-' | translate}}
+</ng-template>

@@ -1,0 +1,23 @@
+.arrow_icon {
+  padding-top: 0.125em;
+  line-height: 1;
+  width: 16px;
+}
+
+#sidebar-menu ul li {
+  border-radius: 8px !important;
+  -webkit-border-radius: 8px !important;
+}
+
+#sidebar-menu ul li:hover {
+  background-color: #DEF3FF !important;
+}
+
+.elites {
+  color: #f2f3f5;
+  border: 0;
+  border-top: var(--bs-border-width) solid;
+  width: 100%;
+  opacity: 1.2;
+  border: 2px solid;
+}

@@ -1,0 +1,7 @@
+<button class="btn btn-{{type}} {{class}}">
+    <span *ngIf="loading" class="bx bx-loader-circle bx-spin"></span>
+    <span>
+        <ng-content></ng-content>
+    </span>
+    <span [class]="iconClass"></span>
+</button>

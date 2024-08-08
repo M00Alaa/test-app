@@ -1,0 +1,127 @@
+<!-- <form [formGroup]="form" (submit)="onSubmit()" nz-form>
+  <div class="container-fluid pt-5 mx-5">
+    <div class="row m-auto pb-5 col-md-12">
+
+      <nz-form-item class="mb-0 col-12 col-md-6 col-xl-5" nzRequired>
+        <nz-form-control>
+          <nz-form-label [nzRequired]="true" [className]="' fw-bold'">
+            التخصص الرئيسى
+          </nz-form-label>
+          <input nz-input nzSize="large" name="subName" formControlName="subName" [placeholder]="'التخصص الفرعى '"
+            type="text" id="subName">
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="mb-0 col-12 col-md-6 col-xl-5" nzRequired>
+        <nz-form-control>
+          <nz-form-label [nzRequired]="true" [className]="' fw-bold'">
+            التخصص الفرعي
+          </nz-form-label>
+          <input nz-input nzSize="large" name="subName" formControlName="subName" [placeholder]="'التخصص الفرعى '"
+            type="text" id="subName">
+        </nz-form-control>
+      </nz-form-item>
+
+      <div class="mb-0 col-md-6 col-xl-2">
+        <button nz-button class="rounded-circle btn-ksa bg-gradient border-0 mt-4" nzSize="large" [nzType]="'primary'">
+          <span [ngClass]="itemDetails?.id ? 'aya-edit' : 'aya-plus' " class="px-2 icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form> -->
+<form [formGroup]="form" nz-form>
+  <div class="container-fluid pt-5 mx-5">
+
+    <div class="d-flex justify-content-center col-md-10">
+
+      <h5 class="text-primary text-center">اضافة تخصص </h5>
+    </div>
+    <hr>
+    <div class="mb-2 col-md-11" style="background-color:
+    #F6FAFB;">
+
+      <div class="col-9 pt-4 mx-2 mb-4">
+        <h6 class="mb-0 d-flex text-danger align-items-center ">
+
+          <span class="bx bxs-left-arrow text-body mx-2"></span>
+
+          بناءا على التخصص الأساسي اكتب التخصصات الفرعية التابعة له
+        </h6>
+
+      </div>
+      <div class="row m-auto pb-5 col-md-12">
+        <!-- Main Specialty Input -->
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-5" nzRequired>
+          <nz-form-control>
+            <nz-form-label [nzRequired]="true" class="fw-bold">
+              اسم التخصص الأساسي
+            </nz-form-label>
+            <input nz-input nzSize="large" [readOnly]="true" name="name" formControlName="name"
+              placeholder="اكتب اسم التخصص الأساسي" type="text" id="name">
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Sub Specialty Input -->
+        <nz-form-item class="mb-0 col-12 col-md-6 col-xl-5" nzRequired>
+          <nz-form-control>
+            <nz-form-label [nzRequired]="true" class="fw-bold">
+              التخصصات الفرعية
+            </nz-form-label>
+            <input nz-input nzSize="large" name="subName" formControlName="subName" placeholder="اكتب التخصص الفرعي هنا"
+              type="text" id="subSpecialty">
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Add Button -->
+        <div class="mb-0 col-md-6 col-xl-2">
+          <button (click)="addSubCategory()" nz-button class="rounded-circle btn-ksa bg-gradient border-0 mt-4"
+            nzSize="large" nzType="primary">
+            <span class="px-2 icon aya-plus"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- List of Sub Specialties -->
+      <div *ngFor="let item of subCategories; let i = index" class="row m-auto pb-2 col-md-12">
+        <div class="col-9">
+          <h6 class="mb-0 d-flex text-body align-items-center ">
+            <button class="btn-icon btn ">
+              <span class="bx bxs-left-arrow"></span>
+            </button>
+            {{item.name}}
+          </h6>
+
+        </div>
+        <div class="col-3 text-right">
+          <button (click)="patchSubName(item.name)" nz-button nzType="default" class="mr-1 bg-transparent border-0">
+            <span class="aya-edit-2 mx-1 text-dark icon icon-ksa"></span>
+          </button>
+          <button (click)="editSubCategory(item.id)" nz-button nzType="default" class="mr-1 bg-transparent border-0">
+            <span class="aya-plus mx-1 text-primary icon icon-ksa"></span>
+          </button>
+          <button (click)="deleteSubCategory(item.id)" nz-button nzType="default" class="ml-1 bg-transparent border-0">
+            <span class="aya-trash mx-1 text-danger icon icon-ksa"></span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="d-flex gap-3 pb-5 mt-5 flex-wrap justify-content-center w-100">
+      <ng-container>
+        <button type="submit" (click)="onSubmit()" nz-button
+          class="px-4  fw-bold bg-green border-0 col-12 col-md-4 col-lg-3" nzSize="large" [nzType]="'primary'">
+          <span>
+            حفظ
+          </span>
+        </button>
+      </ng-container>
+      <button (click)="onCancel()" nz-button class="px-4  fw-bold  btn-bg col-12 col-md-4 col-lg-3 border-0 "
+        nzSize="large" [nzType]="'primary'">
+        الغاء
+      </button>
+    </footer>
+  </div>
+</form>

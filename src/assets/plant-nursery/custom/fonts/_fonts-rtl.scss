@@ -1,0 +1,38 @@
+/* Define Cairo Font Face with Multiple Weights */
+
+/* Regular */
+@font-face {
+  font-family: 'Tajwal';
+  src: url('./fonts/Tajawal-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Tajwal';
+  src: url('./fonts/Tajawal-Light.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Tajwal';
+  src: url('./fonts/Tajawal-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Tajwal';
+  src: url('./fonts/Tajawal-Medium.ttf') format('truetype');
+  font-weight: 600;
+}
+
+
+
+
+/* Usage Example */
+body {
+  font-family: 'Tajwal', sans-serif;
+  font-weight: 500;
+}
+
+
+$font-family-sans-serif: 'Tajwal',
+sans-serif;
+$font-family-monospace: 'Tajwal',
+sans-serif;

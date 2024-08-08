@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>
+    KSA-Elites
+  </title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content=" KSA-Elites ">
+  <meta name="keywords" content="KSA-Elites ">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="favicon.ico" rel="apple-touch-icon">
+  <style>
+    #loader_wrapper {
+      background-color: #fff;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 999999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .loader {
+      width: 48px;
+      height: 48px;
+      display: inline-block;
+      position: relative;
+      transform: rotate(45deg);
+    }
+
+    .loader::before {
+      content: '';
+      box-sizing: border-box;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      left: 0;
+      top: -24px;
+      animation: animloader 4s ease infinite;
+    }
+
+    .loader::after {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: #0a8bd6c0;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      animation: animloader2 2s ease infinite;
+    }
+
+    @keyframes animloader {
+      0% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
+      }
+
+      12% {
+        box-shadow: 0 24px #3CA3DD, 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
+      }
+
+      25% {
+        box-shadow: 0 24px #3CA3DD, 24px 24px #3CA3DD, 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
+      }
+
+      37% {
+        box-shadow: 0 24px #3CA3DD, 24px 24px #3CA3DD, 24px 48px #3CA3DD, 0px 48px rgba(255, 255, 255, 0);
+      }
+
+      50% {
+        box-shadow: 0 24px #3CA3DD, 24px 24px #3CA3DD, 24px 48px #3CA3DD, 0px 48px #3CA3DD;
+      }
+
+      62% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px #3CA3DD, 24px 48px #3CA3DD, 0px 48px #3CA3DD;
+      }
+
+      75% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px #3CA3DD, 0px 48px #3CA3DD;
+      }
+
+      87% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px white;
+      }
+
+      100% {
+        box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0px 48px rgba(255, 255, 255, 0);
+      }
+    }
+
+    @keyframes animloader2 {
+      0% {
+        transform: translate(0, 0) rotateX(0) rotateY(0);
+      }
+
+      25% {
+        transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+      }
+
+      50% {
+        transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+      }
+
+      75% {
+        transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+      }
+
+      100% {
+        transform: translate(0, 0) rotateX(0) rotateY(360deg);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <app-root>
+    <div id="loader_wrapper">
+      <span class="loader"></span>
+    </div>
+  </app-root>
+</body>
+
+</html>

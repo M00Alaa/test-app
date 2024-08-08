@@ -1,0 +1,54 @@
+.bg-ksa {
+  background-color: #f2f3f5 !important;
+}
+
+.btn-tool {
+  background-color: #ffff;
+  color: #545454;
+  border: 1px solid #3ca3dd;
+  border-radius: 8px;
+}
+
+.icon-ksa {
+  color: #3ca3dd;
+}
+
+td {
+  vertical-align: middle !important;
+  text-align: center !important;
+  font-weight: 600;
+  color: #545454;
+  font-size: 14px;
+
+}
+
+.custom-small-font {
+  font-size: 12px;
+  /* Adjust the size as needed */
+}
+
+.aya-dots-2 {
+  padding-left: 10px;
+  margin-bottom: 7px;
+  transform: rotate(90deg);
+}
+
+.icon-bg {
+  color: #545454;
+}
+
+.btn-toolbar {
+  background-color: #E6E6E6;
+  color: #545454;
+}
+
+.btn-toolbar:focus,
+.btn-toolbar:active,
+.btn-toolbar:hover {
+  background-color: #42a7e1;
+  color: #E6E6E6;
+
+  .icon-bg {
+    color: #E6E6E6;
+  }
+}

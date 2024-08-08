@@ -1,0 +1,14 @@
+:host ::ng-deep ngb-popover-window{
+    top: 16px !important;
+}
+
+.dropdown-item{
+    transition: all .1s;
+    -webkit-transition: all .1s;
+    -moz-transition: all .1s;
+    -ms-transition: all .1s;
+    -o-transition: all .1s;
+}
+.dropdown-item:hover{
+    font-weight: bold;
+}

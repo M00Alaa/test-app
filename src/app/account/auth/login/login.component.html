@@ -1,0 +1,67 @@
+<mg-auth-wrapper>
+  <div class=" d-flex h-100 w-100 py-3 align-items-center h-100 justify-content-center "
+    style="background-color: #eef5f8;">
+    <div class="col-12">
+      <div class="mb-4 mx-auto text-center">
+      </div>
+      <div class="card mx-auto mg-card">
+        <div class="card-body d-flex justify-content-center col-md-12">
+          <form nz-form (keypress.enter)="onSubmit()" [formGroup]="loginForm">
+            <div class="row">
+              <div>
+                <h4 class="w-100 card-font  fw-bolder text-center ">
+                  قاعدة بيانات
+                </h4>
+              </div>
+              <div>
+                <h4 class="w-100 card-font fw-bolder text-center  ">
+                  النخب السعودية
+                </h4>
+              </div>
+
+            </div>
+
+            <nz-form-item class="mb-3" nzRequired>
+              <nz-form-control>
+                <nz-form-label [nzRequired]="true" [className]="' fw-bold'">
+                  البريد الالكترونى
+                </nz-form-label>
+                <input formControlName="userName" nz-input nzSize="large" name="username"
+                  [placeholder]="'اكتب اسم المستخدم أو بريدك الإلكتروني'" type="text" id="username">
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item class="mb-1" nzRequired>
+              <nz-form-control>
+                <nz-form-label [nzRequired]="true" [className]="' fw-bold'">
+                  كلمة المرور
+                </nz-form-label>
+                <input formControlName="password" nz-input nzSize="large" name="password"
+                  [placeholder]="'اكتب كلمة المرور'" type="password" id="password">
+              </nz-form-control>
+            </nz-form-item>
+            <!-- <div class="col-12">
+              <div class="text-start">
+                <a class="card-font fw-bolder ">
+                  <small>
+                    هل نسيت كلمة المرور ؟
+                  </small>
+                </a>
+              </div>
+            </div> -->
+            <button (click)="onSubmit()" [nzLoading]="loading" nz-button
+              class="col-12 btn-ksa bg-gradient border-0 mt-5" nzSize="large" [nzType]="'primary'">
+              تسجيــــل دخــــول
+            </button>
+
+            <button *ngIf="false" routerLink="/account/select-role" nz-button
+              class="col-12 mt-2 border-0 bg-white text-primary" nzSize="large" [nzType]="'primary'">
+              حســــاب جديــد
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end container -->
+</mg-auth-wrapper>
+<!-- end page -->

@@ -1,0 +1,56 @@
+<div [autoClose]="'outside'" ngbDropdown class="d-inline-block">
+    <button class="fs-20px  btn-secondary btn  btn-lg  px-5 px-md-60px h-60px" id="dropdownBasic1"
+        ngbDropdownToggle>
+        نوع التسجيل
+        <span class="bx ms-2 bxs-down-arrow fs-12px"></span>
+    </button>
+    <div ngbDropdownMenu class="mt-2 fs-20px w-100" aria-labelledby="company_dropdown">
+        <div class="text-primary">
+            <button ngbDropdownItem
+                class="text-primary border-0 d-flex align-items-center justify-content-between"
+                [ngClass]="{'fw-bold': popoverList?.isOpen()}" placement="end"
+                popoverClass="p-0 fs-20px bg-light  overflow-hidden min-w-200px" #popoverList="ngbPopover"
+                [ngbPopover]="childDropTemp" type="button" id="company_dropdown">
+                <span>
+                    شركــة
+                </span>
+                <span class="bx  bx-chevron-right">
+
+                </span>
+
+
+            </button>
+            <ng-template #childDropTemp>
+                <button (click)="goToSignUp('CO_CONST')" class="text-primary" ngbDropdownItem>
+                    مقاولات
+                </button>
+                <button (click)="goToSignUp('CO_CONSULT')" class="text-primary" ngbDropdownItem>
+                    استشارات
+                </button>
+
+            </ng-template>
+        </div>
+        <button [ngClass]="{'fw-bold': employeePopoverList?.isOpen()}" placement="end"
+            popoverClass="p-0 fs-20px bg-light overflow-hidden min-w-200px" #employeePopoverList="ngbPopover"
+            [ngbPopover]="employeeChildDropTemp" ngbDropdownItem
+            class="text-primary border-0 d-flex align-items-center justify-content-between">
+            موظــف
+            <span class="bx  bx-chevron-right">
+
+            </span>
+
+        </button>
+        <ng-template #employeeChildDropTemp>
+            <button (click)="goToSignUp('EMPLOY_AGENCY')" class="text-primary" ngbDropdownItem>
+                موظف وكالة
+            </button>
+            <button (click)="goToSignUp('EMPLOY_MANAGEMENT')" class="text-primary" ngbDropdownItem>
+                موظف إدارة
+            </button>
+
+        </ng-template>
+        <!-- <button ngbDropdownItem class="text-primary">
+            مشرف النظام
+        </button> -->
+    </div>
+</div>
