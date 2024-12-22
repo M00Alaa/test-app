@@ -12,6 +12,7 @@
     "build-stage": "npm i -f &&  node --max_old_space_size=8000 node_modules/@angular/cli/bin/ng build --configuration stage",
     "release": "npm i -f && ng build --configuration release",
     "build-prod": "npm i -f && ng build --configuration production",
+    "build-dep": "npm i -f && ng build --configuration deployment",
     "start": "node --max_old_space_size=8000 node_modules/@angular/cli/bin/ng serve --o",
     "start:windows": "ng serve --port 44441 --ssl --ssl-cert %APPDATA%\\ASP.NET\\https\\%npm_package_name%.pem --ssl-key %APPDATA%\\ASP.NET\\https\\%npm_package_name%.key",
     "start:default": "ng serve --port 44441 --ssl --ssl-cert $HOME/.aspnet/https/${npm_package_name}.pem --ssl-key $HOME/.aspnet/https/${npm_package_name}.key",

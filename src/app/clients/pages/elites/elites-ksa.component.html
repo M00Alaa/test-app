@@ -16,40 +16,39 @@
     <div class="d-grid">
       <div class="table-v2 d-none d-md-block">
         <!-- Table for desktop -->
-        <div class="card p-4 col-md-12">
-          <div class="os-toolbar d-flex col-md-12">
-            <div class="d-flex col-md-8">
-              <div *ngIf="acc?.roles?.includes('Admin')">
+        <div class="card p-4 col-12">
+          <div class="os-toolbar justify-content-between col-12">
+            <div class="d-flex justify-content-between align-items-center gap-3 col-md-8">
+              <div class="col-md-2" *ngIf="acc?.roles?.includes('Admin')">
                 <ng-container *appRole="[roles.Admin]">
-                  <button routerLink="add" class="btn px-4 btn-sm btn-tool" style="
+                  <button routerLink="add" class="btn w-100 btn-sm btn-tool" style="
                   padding-bottom: 12px;
               ">
-                    <span class="aya-plus icon icon-ksa"></span>
+                    <span class="aya-plus icon icon-ksa me-1"></span>
                     <span>إضافة</span>
                   </button>
                 </ng-container>
               </div>
-              <div class=" col-md-2 mx-2">
+              <div class="col-md-3">
                 <ng-select (change)="getAllElites(this._page)" [(ngModel)]="filterQualificationId" class="sm btn-tool"
                   [searchable]="false" placeholder=" المؤهلات">
 
                   <ng-option *ngFor="let item of qualifications" [value]="item?.name">{{item?.name}}</ng-option>
                 </ng-select>
               </div>
-              <div class="col-md-2 mx-4">
+              <div class="col-md-3">
                 <ng-select (change)="getAllElites(this._page)" [(ngModel)]="filterCategoryId" class="sm btn-tool"
                   [searchable]="false" placeholder="التخصص">
 
                   <ng-option *ngFor="let item of subCategories" [value]="item?.name">{{item?.name}}</ng-option>
                 </ng-select>
               </div>
-              <div class="col-md-2 mx-2">
+              <div class="col-md-3">
                 <ng-select (change)="getAllElites(this._page)" [(ngModel)]="filterCityId" class="sm btn-tool
                 " [searchable]="false" placeholder="المدن">
                   <ng-option *ngFor="let item of cities" [value]="item?.name">{{item?.name}}</ng-option>
                 </ng-select>
               </div>
-
             </div>
 
             <div class=" col-md-3">
